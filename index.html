@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="gameContainer">
+      <h1 class="title">Угадай число от 1 до 100!</h1>
+
+      <div class="attemptCounter">
+        <p class="textTimes">Осталось попыток: <span class="times">10</span></p>
+
+        <div class="timerDisplay">
+          <span class="seconds">45</span>:<span class="ms">00</span>
+        </div>
+      </div>
+
+      <button class="generate">Сгенерировать число</button>
+
+      <div class="inputGroup">
+        <label for="numberInput" class="labelForInput">Введите число</label>
+        <input
+          type="number"
+          id="numberInput"
+          class="numberInput"
+          min="1"
+          max="100"
+        />
+        <button class="test">Проверить</button>
+      </div>
+
+      <div class="tip">
+        <p class="clue">
+          Подсказка: <span class="help">Больше или Меньше</span>
+        </p>
+      </div>
+
+      <button class="restart hidden">Начать заново</button>
+
+      <div class="messages">
+        <p class="congratulation hidden">Ты угадал(а), молодец, держи краба!</p>
+        <p class="solution hidden">
+          Ты не угадал(а) :( число было: <span class="solutionNumber">50</span>
+        </p>
+        <p class="timeOut hidden">
+          Время истекло :( число было <span class="solutionNumber">50</span>
+        </p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
