@@ -15,7 +15,7 @@ let generateNumber = null;
 let timer = null;
 let result = null;
 
-generateButton.onclick = () => {
+function startNewGame() {
   generateNumber = Math.floor(Math.random() * 100 + 1);
   console.log("Загадонное число -", generateNumber);
   clearInterval(timer);
@@ -50,44 +50,10 @@ generateButton.onclick = () => {
   }, 50);
   inputNumber.focus();
   inputNumber.select();
-};
+}
 
-restartButton.onclick = () => {
-  generateNumber = Math.floor(Math.random() * 100 + 1);
-  console.log("Загадонное число -", generateNumber);
-  clearInterval(timer);
-  timeOutText.classList.add("hidden");
-  restartButton.classList.add("hidden");
-  solutionText.classList.add("hidden");
-  congratulation.classList.add("hidden");
-  attempts.textContent = "10";
-  help.textContent = "Больше или меньше";
-  solutionNumber.forEach((el) => (el.textContent = generateNumber));
-
-  let totalTimeMs = 45000;
-  const setTimeStart = Date.now();
-
-  timer = setInterval(() => {
-    if (attempts.textContent === "0") {
-      clearInterval(timer);
-    }
-    const elapsed = Date.now() - setTimeStart;
-    const remaining = Math.max(0, totalTimeMs - elapsed);
-    const timeSec = Math.floor(remaining / 1000);
-    const timeMs = Math.floor((remaining % 1000) / 10);
-    secondsDisplay.textContent = timeSec.toString().padStart(2, "0");
-    msDisplay.textContent = timeMs.toString().padStart(2, "0");
-    if (remaining <= 0) {
-      clearInterval(timer);
-      solutionNumber.forEach((el) => (el.textContent = generateNumber));
-      timeOutText.classList.remove("hidden");
-      restartButton.classList.remove("hidden");
-      generateNumber = null;
-    }
-  }, 50);
-  inputNumber.focus();
-  inputNumber.select();
-};
+generateButton.onclick = startNewGame;
+restartButton.onclick = startNewGame;
 
 inputNumber.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
